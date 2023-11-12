@@ -1,0 +1,52 @@
+# Establish Context and connect to the card
+establish_context
+card_connect
+
+# Select applet
+select -AID A00000006203010C060102
+
+# Hello for checking response size
+send_apdu -APDU 0010000000
+
+# Actual hello
+send_apdu -APDU 00100000000C
+
+# Auth
+send_apdu -APDU 002000000400000010
+
+# Get auth status
+send_apdu -APDU A0C0000002
+
+# Get auth status
+send_apdu -APDU A0C0000002
+
+# Get public key: size ?
+send_apdu -APDU 0030000000
+
+# Actual get public key
+send_apdu -APDU 003000000047
+
+# Ask for signing "Hello"
+send_apdu -APDU 003100000548656C6C6F
+
+# Fetch signature
+send_apdu -APDU A0C0000040
+
+# Logout
+send_apdu -APDU 0021000000
+
+# Get logout status
+send_apdu -APDU 002100000002
+
+# Auth
+send_apdu -APDU 002000000400000000
+
+# Get auth status
+send_apdu -APDU A0C0000002
+
+
+
+# Disconnect the card and release context
+card_disconnect
+release_context
+

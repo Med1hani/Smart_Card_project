@@ -1,0 +1,19 @@
+mode_201
+gemXpressoPro
+enable_trace
+establish_context
+card_connect
+
+# Select your applet by AID (Application Identifier)
+
+select -AID a00000006203010c060102
+
+send_apdu -APDU 0010000000
+
+send_apdu -APDU 002000000400000000
+
+send_apdu -APDU 0030000000
+
+# Deactivate the card and release context
+card_disconnect
+release_context
